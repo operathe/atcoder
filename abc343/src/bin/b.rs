@@ -1,26 +1,17 @@
-#[allow(unused_imports)]
-use itertools::{iproduct, Itertools};
-#[allow(unused_imports)]
-use num_traits::pow;
-#[allow(unused_imports)]
-use proconio::{
-    fastout,
-    input,
-    marker::{Chars, Usize1},
-};
-#[allow(unused_imports)]
-use std::cmp::{max, min};
-#[allow(unused_imports)]
-use std::collections::{HashMap, HashSet, VecDeque};
-#[allow(unused_imports)]
-use std::iter::FromIterator;
-#[allow(non_snake_case)]
+use proconio::*;
 
-#[fastout]
 fn main() {
-    input!{
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+    input! {
+        n: usize,
+        a: [[usize; n]; n]
+    }
+
+    for row in a {
+        for (x, cell) in row.iter().enumerate() {
+            if *cell == 1 {
+                print!("{} ", x + 1)
+            }
+        }
+        println!()
     }
 }
