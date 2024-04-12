@@ -23,7 +23,7 @@ fn main() {
             a: usize,
         }
         ans.push(a);
-        if a == 0 {
+        if a.eq(&0) {
             break;
         }
     }
