@@ -4,8 +4,7 @@ use itertools::{iproduct, Itertools};
 use num_traits::pow;
 #[allow(unused_imports)]
 use proconio::{
-    fastout,
-    input,
+    fastout, input,
     marker::{Chars, Usize1},
 };
 #[allow(unused_imports)]
@@ -15,12 +14,20 @@ use std::collections::{HashMap, HashSet, VecDeque};
 #[allow(unused_imports)]
 use std::iter::FromIterator;
 #[allow(non_snake_case)]
-
 #[fastout]
+
 fn main() {
-    input!{
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+    let mut ans = vec![];
+    loop {
+        input! {
+            a: usize,
+        }
+        ans.push(a);
+        if a == 0 {
+            break;
+        }
+    }
+    for i in (0..ans.len()).rev() {
+        println!("{}", ans[i]);
     }
 }
