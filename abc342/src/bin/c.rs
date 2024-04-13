@@ -1,26 +1,30 @@
-#[allow(unused_imports)]
-use itertools::{iproduct, Itertools};
-#[allow(unused_imports)]
-use num_traits::pow;
-#[allow(unused_imports)]
-use proconio::{
-    fastout,
-    input,
-    marker::{Chars, Usize1},
-};
-#[allow(unused_imports)]
-use std::cmp::{max, min};
-#[allow(unused_imports)]
-use std::collections::{HashMap, HashSet, VecDeque};
-#[allow(unused_imports)]
-use std::iter::FromIterator;
-#[allow(non_snake_case)]
+use std::collections::HashMap;
 
-#[fastout]
+use itertools::Itertools;
+use proconio::{input, marker::Chars};
+
 fn main() {
-    input!{
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+    input! {
+        _n:usize,
+        s:Chars,
+        q:usize,
+        cd:[(char,char);q],
     }
+    let mut map = HashMap::new();
+    ('a'..='z').into_iter().for_each(|c| {
+        map.insert(c, c);
+    });
+    for (c, d) in cd {
+        let keys: Vec<_> = map
+            .iter()
+            .filter(|(_, &v)| v == c)
+            .map(|(&k, _)| k)
+            .collect();
+        for key in keys {
+            map.insert(key, d);
+        }
+    }
+    //sを文字列で出力
+    let ans = s.iter().map(|&c| map[&c]).collect::<String>();
+    println!("{}", ans);
 }
