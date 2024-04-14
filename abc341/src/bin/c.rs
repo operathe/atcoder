@@ -1,26 +1,43 @@
 #[allow(unused_imports)]
-use itertools::{iproduct, Itertools};
-#[allow(unused_imports)]
-use num_traits::pow;
-#[allow(unused_imports)]
 use proconio::{
-    fastout,
     input,
-    marker::{Chars, Usize1},
+    marker::{Bytes, Chars, Usize1},
 };
-#[allow(unused_imports)]
-use std::cmp::{max, min};
-#[allow(unused_imports)]
-use std::collections::{HashMap, HashSet, VecDeque};
-#[allow(unused_imports)]
-use std::iter::FromIterator;
-#[allow(non_snake_case)]
 
-#[fastout]
 fn main() {
-    input!{
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+    input! {
+        h: usize,
+        w: usize,
+        _n: usize,
+        t: Bytes,
+        s: [Bytes; h],
     }
+    let mut res = 0;
+    for x in 1..h - 1 {
+        for y in 1..w - 1 {
+            let mut x = x;
+            let mut y = y;
+            if s[x][y] == b'#' {
+                continue;
+            }
+            let mut f = true;
+            for &c in &t {
+                match c {
+                    b'U' => x -= 1,
+                    b'D' => x += 1,
+                    b'L' => y -= 1,
+                    b'R' => y += 1,
+                    _ => unreachable!(),
+                }
+                if s[x][y] == b'#' {
+                    f = false;
+                    break;
+                }
+            }
+            if f {
+                res += 1;
+            }
+        }
+    }
+    println!("{}", res);
 }

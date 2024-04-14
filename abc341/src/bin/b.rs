@@ -4,8 +4,7 @@ use itertools::{iproduct, Itertools};
 use num_traits::pow;
 #[allow(unused_imports)]
 use proconio::{
-    fastout,
-    input,
+    fastout, input,
     marker::{Chars, Usize1},
 };
 #[allow(unused_imports)]
@@ -14,13 +13,18 @@ use std::cmp::{max, min};
 use std::collections::{HashMap, HashSet, VecDeque};
 #[allow(unused_imports)]
 use std::iter::FromIterator;
-#[allow(non_snake_case)]
 
+#[allow(non_snake_case)]
 #[fastout]
 fn main() {
-    input!{
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+    input! {
+        n: usize,
+        mut a: [u64; n],
+        st: [(u64, u64); n - 1],
+    };
+    for (i, (s, t)) in st.into_iter().enumerate() {
+        a[i + 1] += (a[i] / s) * t; // Remove the unnecessary dereference operator `*&` when accessing `i`
     }
+    //aのさいごの要素を出力
+    println!("{}", a[n - 1]);
 }
