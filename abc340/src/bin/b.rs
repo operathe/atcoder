@@ -4,8 +4,7 @@ use itertools::{iproduct, Itertools};
 use num_traits::pow;
 #[allow(unused_imports)]
 use proconio::{
-    fastout,
-    input,
+    fastout, input,
     marker::{Chars, Usize1},
 };
 #[allow(unused_imports)]
@@ -15,12 +14,21 @@ use std::collections::{HashMap, HashSet, VecDeque};
 #[allow(unused_imports)]
 use std::iter::FromIterator;
 #[allow(non_snake_case)]
-
 #[fastout]
 fn main() {
-    input!{
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+    input! {
+        q: usize,
+        mut query: [(usize, usize ); q]
+    }
+    let mut ans = vec![];
+    for (a, b) in query {
+        //aが１ならansの最後にbを追加
+        //aが２ならansの最後からb番目を出力
+        if a == 1 {
+            ans.push(b);
+        } else {
+            //ansの最後からb番目を出力
+            println!("{}", ans[ans.len() - b]);
+        }
     }
 }

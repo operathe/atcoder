@@ -4,7 +4,8 @@ use itertools::{iproduct, Itertools};
 use num_traits::pow;
 #[allow(unused_imports)]
 use proconio::{
-    fastout, input,
+    fastout,
+    input,
     marker::{Chars, Usize1},
 };
 #[allow(unused_imports)]
@@ -14,11 +15,12 @@ use std::collections::{HashMap, HashSet, VecDeque};
 #[allow(unused_imports)]
 use std::iter::FromIterator;
 #[allow(non_snake_case)]
+
 #[fastout]
 fn main() {
-    input! {
-        a: usize, b: usize, d:usize,
+    input!{
+        h: usize, w: usize,
+        s: [Chars; h],
+        mut plan: [(usize, usize, usize); h]
     }
-    let ans: Vec<usize> = (a..=b).step_by(d).collect();
-    println!("{}", ans.iter().map(|x| x.to_string()).join(" "));
 }

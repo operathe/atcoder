@@ -17,8 +17,8 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        a: usize, b: usize, d:usize,
+        h: usize, w: usize,
+        s: [Chars; h],
+        mut plan: [(usize, usize, usize); h]
     }
-    let ans: Vec<usize> = (a..=b).step_by(d).collect();
-    println!("{}", ans.iter().map(|x| x.to_string()).join(" "));
 }
