@@ -17,8 +17,9 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+        s: String,
     }
+    // sを.で分割する
+    let s = s.split('.').collect::<Vec<&str>>();
+    println!("{}", s.last().unwrap());
 }
