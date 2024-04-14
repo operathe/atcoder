@@ -1,0 +1,10 @@
+/target/
+/.cargo/
+/.idea/
+/.vscode/
+/.git/
+/.gitattributes
+/.gitmodules
+/.gitkeep
+/.gitlab-ci.yml
+/.hg/
