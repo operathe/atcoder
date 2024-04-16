@@ -1,4 +1,3 @@
-use std::collections::HashMap;
 
 fn main() {
     let num_1 = [1, 2, 3, 4, 5];

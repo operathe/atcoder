@@ -1,26 +1,26 @@
-#[allow(unused_imports)]
-use itertools::{iproduct, Itertools};
-#[allow(unused_imports)]
-use num_traits::pow;
-#[allow(unused_imports)]
-use proconio::{
-    fastout,
-    input,
-    marker::{Chars, Usize1},
-};
-#[allow(unused_imports)]
-use std::cmp::{max, min};
-#[allow(unused_imports)]
-use std::collections::{HashMap, HashSet, VecDeque};
-#[allow(unused_imports)]
-use std::iter::FromIterator;
-#[allow(non_snake_case)]
+use proconio::*;
 
-#[fastout]
 fn main() {
-    input!{
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+    input! {
+        n: usize,
+        q: [u32; n],
+        a: [u32; n],
+        b: [u32; n],
     }
+    let mut ans = 0;
+    for i in 0.. {
+        if q.iter().zip(a.iter()).any(|p| *p.0 < *p.1 * i) {
+            break;
+        }
+        let k = q
+            .iter()
+            .zip(a.iter())
+            .zip(b.iter())
+            .filter(|p| *p.1 > 0)
+            .map(|((q, a), b)| (*q - i * *a) / *b)
+            .min()
+            .unwrap();
+        ans = ans.max(i + k);
+    }
+    println!("{}", ans);
 }

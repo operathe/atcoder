@@ -4,8 +4,7 @@ use itertools::{iproduct, Itertools};
 use num_traits::pow;
 #[allow(unused_imports)]
 use proconio::{
-    fastout,
-    input,
+    fastout, input,
     marker::{Chars, Usize1},
 };
 #[allow(unused_imports)]
@@ -15,12 +14,19 @@ use std::collections::{HashMap, HashSet, VecDeque};
 #[allow(unused_imports)]
 use std::iter::FromIterator;
 #[allow(non_snake_case)]
-
 #[fastout]
 fn main() {
-    input!{
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+    input! {
+        s: Chars,
+    }
+    //sの文字列の先頭が大文字かどうか判定する
+    if s[0].is_uppercase() {
+        if s[1..].iter().all(|&c| c.is_lowercase()) {
+            println!("Yes");
+        } else {
+            println!("No");
+        }
+    } else {
+        println!("No");
     }
 }
