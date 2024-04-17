@@ -4,8 +4,7 @@ use itertools::{iproduct, Itertools};
 use num_traits::pow;
 #[allow(unused_imports)]
 use proconio::{
-    fastout,
-    input,
+    fastout, input,
     marker::{Chars, Usize1},
 };
 #[allow(unused_imports)]
@@ -15,12 +14,23 @@ use std::collections::{HashMap, HashSet, VecDeque};
 #[allow(unused_imports)]
 use std::iter::FromIterator;
 #[allow(non_snake_case)]
-
 #[fastout]
 fn main() {
-    input!{
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+    input! {
+        n: usize,
+        mut point: [(usize, usize); n]
+    }
+    let mut Takahashi = 0;
+    let mut Aoki = 0;
+    for i in 0..n {
+        Takahashi += point[i].0;
+        Aoki += point[i].1;
+    }
+    if Takahashi > Aoki {
+        println!("Takahashi");
+    } else if Takahashi < Aoki {
+        println!("Aoki");
+    } else {
+        println!("Draw");
     }
 }
