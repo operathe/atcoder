@@ -1,26 +1,30 @@
-#[allow(unused_imports)]
-use itertools::{iproduct, Itertools};
-#[allow(unused_imports)]
-use num_traits::pow;
-#[allow(unused_imports)]
-use proconio::{
-    fastout,
-    input,
-    marker::{Chars, Usize1},
-};
-#[allow(unused_imports)]
-use std::cmp::{max, min};
-#[allow(unused_imports)]
-use std::collections::{HashMap, HashSet, VecDeque};
-#[allow(unused_imports)]
-use std::iter::FromIterator;
-#[allow(non_snake_case)]
-
-#[fastout]
 fn main() {
-    input!{
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+    proconio::input!(mut n: u128);
+    n -= 1;
+    let mut ans = 0u128;
+    let mut pow = 1;
+    while n > 0 {
+        ans += pow * (n % 5 * 2);
+        n /= 5;
+        pow *= 10;
     }
+    println!("{}", ans);
 }
+// use itertools::Itertools;
+// use proconio::input;
+// fn main() {
+//     input! {
+//         mut n: usize
+//     }
+//     if n == 1 {
+//         println!("0");
+//     }
+//     let mut ans = vec![];
+//     n -= 1;
+//     while n > 0 {
+//         let index = n % 5;
+//         ans.push(index * 2);
+//         n /= 5;
+//     }
+//     println!("{}", ans.iter().rev().join(""));
+//}
