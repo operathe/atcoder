@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 
 fn main() {
     let num_1 = [1, 2, 3, 4, 5];
@@ -18,7 +19,6 @@ fn main() {
     //     num_list.iter().filter(|&x| x % 2 == 0).collect::<Vec<_>>()
     // );
     // println!("{:?}", num_list_index.iter().collect::<Vec<_>>());
-
     let string = num_1.iter().map(|x| x.to_string()).collect::<Vec<String>>();
     //stringに格納された値を連続した文字列に変換
     let string = string.join(" ");
@@ -35,4 +35,8 @@ fn main() {
     let mut num_list_hash: Vec<_> = num_list_hash.iter().collect();
     num_list_hash.sort();
     println!("{:?}", num_list_hash);
+}
+
+fn foo() {
+    println!("{}", 5)
 }

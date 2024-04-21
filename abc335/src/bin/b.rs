@@ -25,7 +25,6 @@ fn main() {
         for j in 0..=n {
             for k in 0..=n {
                 if i + j + k > n {
-                    //(i,j,k)を配列に格納
                     break;
                 }
                 v.push((i, j, k));
