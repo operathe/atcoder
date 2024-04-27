@@ -19,11 +19,10 @@ fn main() {
     //     num_list.iter().filter(|&x| x % 2 == 0).collect::<Vec<_>>()
     // );
     // println!("{:?}", num_list_index.iter().collect::<Vec<_>>());
-    let string = num_1.iter().map(|x| x.to_string()).collect::<Vec<String>>();
+    let mut string = num_1.iter().map(|x| x.to_string()).collect::<Vec<String>>();
     //stringに格納された値を連続した文字列に変換
     let string = string.join(" ");
     println!("{}", string);
-
     let mut num_list_hash = HashMap::new();
     for (i, &num) in num_list.iter().enumerate() {
         num_list_hash.insert(i, num);
@@ -35,8 +34,8 @@ fn main() {
     let mut num_list_hash: Vec<_> = num_list_hash.iter().collect();
     num_list_hash.sort();
     println!("{:?}", num_list_hash);
+    println!("foo()");
 }
-
 fn foo() {
-    println!("{}", 5)
+    println!("5")
 }
