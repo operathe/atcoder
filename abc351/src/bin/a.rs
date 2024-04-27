@@ -22,13 +22,7 @@ fn main() {
         b: [usize; 8],
     }
     //aの合計からbの合計を引いたものが答え
-    let mut sum_a = 0;
-    for i in 0..9 {
-        sum_a += a[i];
-    }
-    let mut sum_b = 0;
-    for i in 0..8 {
-        sum_b += b[i];
-    }
+    let sum_a = a.iter().sum::<usize>();
+    let sum_b = b.iter().sum::<usize>();
     println!("{}", sum_a - sum_b + 1);
 }
