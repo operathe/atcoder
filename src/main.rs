@@ -1,5 +1,5 @@
+use proconio::input;
 use std::collections::HashMap;
-
 fn main() {
     let num_1 = [1, 2, 3, 4, 5];
     let num_2 = [6, 7, 8, 9, 10];
@@ -39,3 +39,17 @@ fn main() {
 fn foo() {
     println!("5")
 }
+//標準入力を受け取る
+// use std::io;
+// fn main() {
+// fn main() {
+//    let mut s = String::new();
+//    io::stdin().read_line(&mut s).unwrap();
+//    let s: i32 = s.trim().parse().unwrap();
+// sの３乗を返す関数
+// fn cube(s: i32) -> i32 {
+//    s * s * s
+//    //s.pow(3)
+//    //sの３乗を返す
+//    //s.pow(3)
+//

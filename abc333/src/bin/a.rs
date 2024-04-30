@@ -17,8 +17,10 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+        n: usize
+    }
+    //nをn個並べた文字列を出力する
+    for _ in 0..n {
+        print!("{}", n);
     }
 }
