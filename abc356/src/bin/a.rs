@@ -14,24 +14,25 @@ use std::collections::{HashMap, HashSet, VecDeque};
 #[allow(unused_imports)]
 use std::iter::FromIterator;
 #[allow(non_snake_case)]
+#[allow(unused_variables)]
 #[fastout]
+
+fn reverse_range(n: usize, l: usize, r: usize) -> Vec<usize> {
+    let mut ans: Vec<usize> = (1..=n).collect();
+    ans[l - 1..r].reverse();
+    ans
+}
+
 fn main() {
     input! {
-        k: usize, g: usize, m: usize,
+        n: usize, l: usize, r: usize
     }
-    let mut glass = 0;
-    let mut mag = 0;
-
-    for _ in 0..k {
-        if glass == g {
-            glass = 0;
-        } else if mag == 0 {
-            mag = m;
-        } else {
-            let mov = if mag <= g - glass { mag } else { g - glass };
-            mag -= mov;
-            glass += mov;
-        }
-    }
-    println!("{} {}", glass, mag);
+    let ans = reverse_range(n, l, r);
+    println!(
+        "{}",
+        ans.iter()
+            .map(|x| x.to_string())
+            .collect::<Vec<String>>()
+            .join(" ")
+    );
 }

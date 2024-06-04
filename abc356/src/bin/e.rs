@@ -14,24 +14,21 @@ use std::collections::{HashMap, HashSet, VecDeque};
 #[allow(unused_imports)]
 use std::iter::FromIterator;
 #[allow(non_snake_case)]
+#[allow(unused_variables)]
 #[fastout]
 fn main() {
     input! {
-        k: usize, g: usize, m: usize,
+        n: usize,
+        mut a: [usize; n],
     }
-    let mut glass = 0;
-    let mut mag = 0;
-
-    for _ in 0..k {
-        if glass == g {
-            glass = 0;
-        } else if mag == 0 {
-            mag = m;
-        } else {
-            let mov = if mag <= g - glass { mag } else { g - glass };
-            mag -= mov;
-            glass += mov;
+    //i=1∑N−1​j=i+1∑N​⌊max(Ai​,Aj​)​/min(Ai​,Aj​)⌋ を求めてください。
+    //ただし、⌊x⌋ は x 以下の最大の整数を表します。例えば、⌊3.14⌋=3、⌊2⌋=2 です。
+    a.sort();
+    let mut ans = 0;
+    for i in 0..n {
+        for j in i + 1..n {
+            ans += max(a[i], a[j]) / min(a[i], a[j]);
         }
     }
-    println!("{} {}", glass, mag);
+    println!("{}", ans);
 }

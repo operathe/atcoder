@@ -4,7 +4,8 @@ use itertools::{iproduct, Itertools};
 use num_traits::pow;
 #[allow(unused_imports)]
 use proconio::{
-    fastout, input,
+    fastout,
+    input,
     marker::{Chars, Usize1},
 };
 #[allow(unused_imports)]
@@ -14,19 +15,12 @@ use std::collections::{HashMap, HashSet, VecDeque};
 #[allow(unused_imports)]
 use std::iter::FromIterator;
 #[allow(non_snake_case)]
+#[allow(unused_variables)]
 #[fastout]
 fn main() {
-    input! {
-        n: usize, s: usize, k: usize,
-        pq: [(usize, usize); n]
-    }
-    let mut ans = 0;
-    for (p, q) in pq {
-        ans += p * q;
-    }
-    if ans >= s {
-        println!("{}", ans);
-    } else {
-        println!("{}", ans + k);
+    input!{
+        h: usize, w: usize,
+        s: [Chars; h],
+        mut plan: [(usize, usize, usize); h]
     }
 }
