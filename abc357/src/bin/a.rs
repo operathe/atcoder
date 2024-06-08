@@ -14,24 +14,21 @@ use std::collections::{HashMap, HashSet, VecDeque};
 #[allow(unused_imports)]
 use std::iter::FromIterator;
 #[allow(non_snake_case)]
+#[allow(unused_variables)]
 #[fastout]
 fn main() {
     input! {
-        k: usize, g: usize, m: usize,
+        n: usize, mut m: usize,
+        s: [usize; n],
     }
-    let mut glass = 0;
-    let mut mug = 0;
 
-    for _ in 0..k {
-        if glass == g {
-            glass = 0;
-        } else if mug == 0 {
-            mug = m;
-        } else {
-            let mov = if mug <= g - glass { mug } else { g - glass };
-            mug -= mov;
-            glass += mov;
+    let mut ans = 0;
+    for a in s {
+        if m < a {
+            break;
         }
+        m -= a;
+        ans += 1;
     }
-    println!("{} {}", glass, mug);
+    println!("{}", ans);
 }
