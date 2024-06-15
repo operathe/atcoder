@@ -17,8 +17,16 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+        ac_month: usize, ac_day: usize,
+        ac_years_today: usize, ac_month_today: usize, ac_day_today: usize,
+    }
+    if ac_day_today + 1 <= ac_day {
+        println!("{} {} {}", ac_years_today, ac_month_today, ac_day_today + 1);
+    } else {
+        if ac_month_today + 1 <= ac_month {
+            println!("{} {} {}", ac_years_today, ac_month_today + 1, 1);
+        } else {
+            println!("{} {} {}", ac_years_today + 1, 1, 1);
+        }
     }
 }

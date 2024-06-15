@@ -18,12 +18,12 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        mut s: Chars,
+        mut s: String,
     }
 
     let mut upper = 0;
     let mut lower = 0;
-    for c in &s {
+    for c in s.chars() {
         if c.is_uppercase() {
             upper += 1;
         } else {
@@ -31,18 +31,8 @@ fn main() {
         }
     }
     if upper > lower {
-        println!(
-            "{}",
-            s.iter()
-                .map(|c| c.to_uppercase().to_string())
-                .collect::<String>()
-        );
+        println!("{}", s.to_uppercase());
     } else {
-        println!(
-            "{}",
-            s.iter()
-                .map(|c| c.to_lowercase().to_string())
-                .collect::<String>()
-        );
+        println!("{}", s.to_lowercase());
     }
 }

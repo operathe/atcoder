@@ -20,10 +20,10 @@ fn main() {
     input! {
         n: usize
     }
-    let mut carpet = vec![vec!['.'; 3usize.pow(n as u32)]; 3usize.pow(n as u32)];
+    let mut carpet = vec![vec!['.'; 3_usize.pow(n)]; 3_usize.pow(n)];
     fill(&mut carpet, n, 0, 0);
-    for i in 0..3usize.pow(n as u32) {
-        for j in 0..3usize.pow(n as u32) {
+    for i in 0..3_usize.pow(n) {
+        for j in 0..3_usize.pow(n) {
             print!("{}", carpet[i][j]);
         }
         println!();
@@ -35,7 +35,7 @@ fn fill(carpet: &mut Vec<Vec<char>>, n: usize, x: usize, y: usize) {
         carpet[x][y] = '#';
         return;
     }
-    let d = 3usize.pow(n as u32 - 1);
+    let d = 3_usize.pow(n - 1);
     for i in 0..3 {
         for j in 0..3 {
             if i == 1 && j == 1 {
