@@ -38,7 +38,8 @@ use superslice::*;
 use std::collections::*;
 #[allow(non_snake_case)]
 #[allow(unused_variables)]
-type Mint = ModInt998244353;
+//type Mint = ModInt998244353;
+
 #[fastout]
 fn main() {
     input!{
