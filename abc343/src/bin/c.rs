@@ -19,20 +19,40 @@ fn main() {
     input! {
         n: usize,
     }
-    let mut ans = 1;
-    for i in 1..=n {
-        let cube = i.pow(3);
-        if cube > n {
-            break;
+    let mut i = 1;
+    let mut ans = 0;
+    while i * i * i <= n {
+        let s = i * i * i;
+        if s == reverse_number(s) {
+            ans = s;
         }
-        if is_palindrome(cube) {
-            ans = cube;
-        }
+        i += 1;
     }
     println!("{}", ans);
 }
 
-fn is_palindrome(n: usize) -> bool {
-    let s = n.to_string();
-    s == s.chars().rev().collect::<String>()
+fn reverse_number(mut num: usize) -> usize {
+    let mut rev = 0;
+    while num > 0 {
+        rev = rev * 10 + num % 10;
+        num /= 10;
+    }
+    rev
 }
+// fn is_palindrome(n: u64) -> bool {
+//     let s = n.to_string();
+//     s.chars().eq(s.chars().rev())
+// }
+//
+// fn largest_palindromic_cube(n: u64) -> u64 {
+//     let cube_root = (n as f64).cbrt().ceil() as u64;
+//
+//     for i in (0..=cube_root).rev() {
+//         let cube = i.saturating_mul(i).saturating_mul(i);
+//         if cube <= n && is_palindrome(cube) {
+//             return cube;
+//         }
+//     }
+//
+//     0
+// }

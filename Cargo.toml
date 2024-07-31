@@ -1,7 +1,8 @@
-workspace = {members = ["abc311", "abc359", "abc358", "abc357", "abc356", "abc355", "abc354", "abc353", "abc352", "abc351", "abc350", "tessoku-book", "abc349", "abc348", "abc347", "abc346", "abc345", "abc344", "abc343", "abc342", "abc341", "abc340", "abc339", "abc338", "abc337", "abc336", "abc335", "abc334", "abc333", "abc332", "abc331", "abc330", "abc329", "abc317", "abc257", "abc255", "abc231", "abs", "arc175", "arc176", "typical90", "typical-algorithm"],exclude = []}
+workspace = {members = ["abc311", "abc359", "abc358", "abc357", "abc356", "abc355", "abc354", "abc353", "abc352", "abc351", "abc350", "tessoku-book", "abc349", "abc348", "abc347", "abc346", "abc345", "abc344", "abc343", "abc342", "abc341", "abc340", "abc339", "abc338", "abc337", "abc336", "abc335", "abc334", "abc333", "abc332", "abc331", "abc330", "abc329", "abc317", "abc257", "abc255", "abc231", "abs", "arc175", "arc176", "typical90", "typical-algorithm", "arc180", "abc360", "abc361", "abc362", "abc328", "abc327", "abc326", "abc325", "abc324", "abc363", "abc364"],exclude = []}
+
 [package]
 name = "atcoder"
-version = "0.1.0"
+version = "1.1.1"
 edition = "2021"
 metadata = { cargo-compete = { bin = { abc311-a = { alias = "abc311_a", problem = "https://atcoder.jp/contests/abc311/tasks/abc311_a"}, abc311-b = { alias = "abc311_b", problem = "https://atcoder.jp/contests/abc311/tasks/abc311_b"}, abc312-a = { alias = "abc312_a", problem = "https://atcoder.jp/contests/abc312/tasks/abc312_a"}}}}
 

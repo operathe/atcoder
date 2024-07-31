@@ -1,26 +1,31 @@
-#[allow(unused_imports)]
-use itertools::{iproduct, Itertools};
-#[allow(unused_imports)]
-use num_traits::pow;
-#[allow(unused_imports)]
-use proconio::{
-    fastout,
-    input,
-    marker::{Chars, Usize1},
-};
-#[allow(unused_imports)]
+#![allow(unused_imports, unused_variables, dead_code, non_snake_case)]
+use ac_library::*;
+use itertools::*;
+use num_traits::{abs, pow};
+use proconio::{fastout, input, marker::*};
 use std::cmp::{max, min};
-#[allow(unused_imports)]
-use std::collections::{HashMap, HashSet, VecDeque};
-#[allow(unused_imports)]
-use std::iter::FromIterator;
-#[allow(non_snake_case)]
+use std::collections::*;
+use superslice::*;
+
+type Mint = ModInt998244353;
 
 #[fastout]
 fn main() {
-    input!{
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+    input! {
+        n: usize,
+        l: usize,
+        r: usize,
+        a: [usize; n],
     }
+    let mut ans = vec![];
+    for &a in &a {
+        if a < l {
+            ans.push(l);
+        } else if a > r {
+            ans.push(r);
+        } else {
+            ans.push(a);
+        }
+    }
+    println!("{}", ans.iter().join(" "));
 }

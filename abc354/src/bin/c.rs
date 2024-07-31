@@ -15,62 +15,45 @@ use std::collections::{HashMap, HashSet, VecDeque};
 use std::iter::FromIterator;
 #[allow(non_snake_case)]
 #[allow(unused_variables)]
-// fn main() {
-//     input! {
-//         n: usize,
-//         cards: [(usize, usize); n]
-//     }
-//     //n枚のカードがある。
-//     // ２枚のカードx, yのうち,ax > ayかつbx < byを満たす場合、yのカードを取り除く
-//     // この操作を繰り返した後、残ったカードの枚数と,何枚目のカードが残ったかを出力する
-//     let mut removed = vec![false; n];
-//     let mut removed_any = true;
-//     while removed_any {
-//         removed_any = false;
-//         for i in 0..n {
-//             for j in 0..n {
-//                 if i != j
-//                     && !removed[i]
-//                     && !removed[j]
-//                     && cards[i].0 > cards[j].0
-//                     && cards[i].1 < cards[j].1
-//                 {
-//                     removed[j] = true;
-//                     removed_any = true;
-//                 }
-//             }
-//         }
-//     }
-
-//     let remaining_cards: Vec<_> = removed.iter().enumerate().filter(|&(_, &r)| !r).collect();
-//     println!("{}", remaining_cards.len());
-
-//     // removed でfalseのインデックスに１を足した数を出力
-//     for (i, &r) in removed.iter().enumerate() {
-//         if !r {
-//             print!("{} ", i + 1);
-//         }
-//     }
-//     println!();
-// }
+#[fastout]
 fn main() {
     input! {
         n: usize,
-        mut cards: [(usize, usize); n]
+        mut ac: [(usize, usize); n],
     }
-
-    // axの降順、bxの昇順でソート
-    cards.sort_by(|a, b| b.0.cmp(&a.0).then(a.1.cmp(&b.1)));
-
-    let mut min_b = cards[0].1;
-    let mut count = 1;
-    for i in 1..n {
-        if cards[i].1 < min_b {
-            min_b = cards[i].1;
-            count += 1;
+    let mut ac = ac
+        .into_iter()
+        .enumerate()
+        .map(|(i, v)| (i, v.0, v.1))
+        .collect::<Vec<_>>();
+    ac.sort_by_key(|v| v.2);
+    let mut ans = vec![];
+    let mut now = 0;
+    for (i, a, c) in ac {
+        if now <= a {
+            ans.push(i + 1);
+            now = a;
         }
     }
-
-    println!("{}", count);
-    //残ったカードのインデックスを出力
+    ans.sort();
+    println!("{}", ans.len());
+    println!("{}", ans.iter().join(" "));
+    // let mut ans = ac
+    //     .into_iter()
+    //     .enumerate()
+    //     .map(|(i, v)| (v.0, v.1, i))
+    //     .collect::<Vec<_>>();
+    // ans.sort_by_key(|v| v.1);
+    // // println!("{:?}", ans);
+    // let mut res = vec![];
+    // let mut now = 0;
+    // for (a, c, i) in ans {
+    //     if now <= a {
+    //         res.push(i + 1);
+    //         now = a;
+    //     }
+    // }
+    // res.sort();
+    // println!("{}", res.len());
+    // println!("{}", res.iter().join(" "));
 }

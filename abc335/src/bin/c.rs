@@ -11,6 +11,7 @@ fn main() {
         q: usize,
     }
     let mut deq = (1..=n).map(|i| (i as i32, 0)).collect::<Deque<_>>();
+    // println!("{:?}", deq);
     for _ in 0..q {
         input!(op: u32);
         if op == 1 {

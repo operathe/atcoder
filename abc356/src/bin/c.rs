@@ -16,37 +16,66 @@ use std::iter::FromIterator;
 #[allow(non_snake_case)]
 #[allow(unused_variables)]
 #[fastout]
-fn calculate_a(a: &[usize]) -> usize {
-    a.iter().fold(0, |acc, &x| acc | 1 << x)
-}
-
-fn calculate_ans(trials: &[(usize, bool)], n: usize, k: usize) -> usize {
-    (0usize..1 << n)
-        .filter(|bs| {
-            trials
-                .iter()
-                .all(|&(a, r)| r == ((a & bs).count_ones() >= k.try_into().unwrap()))
-        })
-        .count()
-}
-
 fn main() {
     input! {
         n: usize,
         m: usize,
         k: usize,
     }
-    let trials = (0..m)
-        .map(|_| {
-            input! {
-                c: usize,
-                a: [Usize1; c],
-                r: char
+    let mut tests = vec![];
+    for _ in 0..m {
+        input! {
+            c: usize,
+            a: [Usize1; c],
+            r: char
+        }
+        tests.push((a, r));
+    }
+    let mut ans = 0;
+    for s in 0..1 << n {
+        let mut ok = true;
+        for (a, r) in &tests {
+            let mut count = 0;
+            for &i in a {
+                if s & (1 << i) != 0 {
+                    count += 1;
+                }
             }
-            let a = calculate_a(&a);
-            (a, r == 'o')
-        })
-        .collect_vec();
-    let ans = calculate_ans(&trials, n, k);
+            if (*r == 'o' && count < k) || (*r == 'x' && count >= k) {
+                ok = false;
+                break;
+            }
+        }
+        if ok {
+            ans += 1;
+        }
+    }
     println!("{}", ans);
 }
+
+// fn main() {
+//     input! {
+//         n: usize,
+//         m: usize,
+//         k: usize,
+//     }
+//     let trials = (0..m)
+//         .map(|_| {
+//             input! {
+//                 c: usize,
+//                 a: [Usize1; c],
+//                 r: char
+//             }
+//             let a: u32 = a.iter().fold(0, |acc, &x| acc | 1 << x);
+//             (a, r == 'o')
+//         })
+//         .collect_vec();
+//     let ans = (0..1 << n)
+//         .filter(|bs| {
+//             trials
+//                 .iter()
+//                 .all(|&(a, r)| r == ((a & bs).count_ones() >= k as u32))
+//         })
+//         .count();
+//     println!("{}", ans);
+// }

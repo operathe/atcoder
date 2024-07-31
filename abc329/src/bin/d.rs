@@ -1,22 +1,20 @@
-#[allow(unused_imports)]
-use ac_library::ModInt998244353;
-#[allow(unused_imports)]
+#![allow(unused_imports, unused_variables, dead_code, non_snake_case)]
+use ac_library::*;
 use itertools::*;
-#[allow(unused_imports)]
-use num_traits::pow;
-#[allow(unused_imports)]
+use num_traits::{pow, abs};
 use proconio::{fastout, input, marker::*};
-#[allow(unused_imports)]
 use std::cmp::{max, min};
-#[allow(unused_imports)]
+use superslice::*;
 use std::collections::*;
-#[allow(non_snake_case)]
-#[allow(unused_variables)]
+
 type Mint = ModInt998244353;
+
 #[fastout]
 fn main() {
     input!{
-        h: usize, w: usize,
+        h: String,
+        n: usize,
+        w: Usize1,
         s: [Chars; h],
         mut plan: [(usize, usize); h]
     }

@@ -13,20 +13,39 @@ use std::cmp::{max, min};
 use std::collections::{HashMap, HashSet, VecDeque};
 #[allow(unused_imports)]
 use std::iter::FromIterator;
+use superslice::*;
 #[allow(non_snake_case)]
 #[allow(unused_variables)]
+const MOD: usize = 100_000_000;
 #[fastout]
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
+        mut a: [ usize; n],
     }
-    let modulo = pow(10, 8);
-    let mut ans = 0;
-    for i in 0..n - 1 {
-        for j in i + 1..n {
-            ans = ans + (a[i] + a[j]) % modulo;
-        }
+    a.sort_unstable();
+    let sum = a.iter().sum::<usize>();
+    let mut ans = sum * (n - 1);
+    for (i, &x) in a.iter().enumerate() {
+        let count = a[i + 1..].lower_bound(&(MOD - x));
+        ans -= MOD * (n - 1 - i - count);
     }
     println!("{}", ans);
 }
+
+//     a.sort_unstable();
+//     let mut ans = 0;
+//     let mut j = n;
+//     for (i, &x) in a.iter().enumerate() {
+//         while j > 0 && a[j - 1] + x >= 100000000 {
+//             j -= 1;
+//         }
+//         ans += x * (n - 1);
+//         if i < j {
+//             ans -= 50000000 * (n - j);
+//         } else {
+//             ans -= 50000000 * (n - j - 1);
+//         }
+//     }
+//     println!("{}", ans);
+// }

@@ -1,26 +1,34 @@
-#[allow(unused_imports)]
-use itertools::{iproduct, Itertools};
-#[allow(unused_imports)]
-use num_traits::pow;
-#[allow(unused_imports)]
-use proconio::{
-    fastout,
-    input,
-    marker::{Chars, Usize1},
-};
-#[allow(unused_imports)]
+#![allow(unused_imports, unused_variables, dead_code, non_snake_case)]
+use ac_library::*;
+use itertools::*;
+use num_traits::{abs, pow};
+use proconio::{fastout, input, marker::*};
 use std::cmp::{max, min};
-#[allow(unused_imports)]
-use std::collections::{HashMap, HashSet, VecDeque};
-#[allow(unused_imports)]
-use std::iter::FromIterator;
-#[allow(non_snake_case)]
+use std::collections::*;
+use superslice::*;
+
+type Mint = ModInt998244353;
 
 #[fastout]
 fn main() {
-    input!{
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+    input! {
+        n: usize,
+        a: [usize; n],
     }
+    let mut z = a.clone();
+    z.sort();
+    let mut sum = z.clone();
+    sum.push(0);
+    for i in (0..n).rev() {
+        sum[i] += sum[i + 1];
+    }
+    println!(
+        "{}",
+        a.iter()
+            .map(|a| {
+                let x = z.upper_bound(a);
+                sum[x]
+            })
+            .join(" ")
+    );
 }
