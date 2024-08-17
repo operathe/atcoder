@@ -15,7 +15,6 @@ use std::collections::*;
 #[allow(unused_imports)]
 use superslice::*;
 type Mint = ModInt1000000007;
-type ModInt = ModInt998244353;
 #[allow(non_snake_case)]
 #[allow(unused_variables)]
 #[fastout]

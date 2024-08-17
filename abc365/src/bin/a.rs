@@ -15,16 +15,11 @@ fn main() {
         y: usize,
     }
 
-    let mut ans = if y % 400 == 0 {
-        366
-    } else if y % 100 == 0 && y % 400 != 0 {
-        365
-    } else if y % 4 != 0 {
-        365
-    } else if y % 4 == 0 && y % 100 != 0 {
-        366
-    } else {
-        365
+    let ans = match y {
+        _ if y % 400 == 0 => 366,
+        _ if y % 100 == 0 => 365,
+        _ if y % 4 == 0 => 366,
+        _ => 365,
     };
     println!("{}", ans);
 }

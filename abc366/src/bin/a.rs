@@ -1,4 +1,10 @@
-#![allow(unused_imports, unused_variables, dead_code, non_snake_case)]
+#![allow(
+    unused_imports,
+    unused_variables,
+    dead_code,
+    non_snake_case,
+    unreachable_code
+)]
 use ac_library::*;
 use itertools::*;
 use num_traits::{abs, pow};
@@ -16,14 +22,10 @@ fn main() {
         t: usize,
         a: usize,
     }
-    if t > (n / 2) {
-        println!("Yes");
-        return;
-    } else if a > (n / 2) {
-        println!("Yes");
-        return;
-    } else {
-        println!("No");
-        return;
-    }
+    let result = match (t > (n / 2), a > (n / 2)) {
+        (true, _) => "Yes",
+        (_, true) => "Yes",
+        _ => "No",
+    };
+    println!("{}", result);
 }
