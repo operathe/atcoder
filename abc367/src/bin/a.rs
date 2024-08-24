@@ -16,15 +16,14 @@ fn main() {
         b: isize,
         c: isize,
     }
-    // １日を0時から始まる24時間として、bからcまでの時間にa時は含まれているか？
     let result = is_in_time_range(a, b, c);
-    println!("{}", if result { "No" } else { "Yes" });
+    println!("{}", if result { "Yes" } else { "No" });
 }
 
 fn is_in_time_range(a: isize, b: isize, c: isize) -> bool {
-    if b <= c {
-        a >= b && a <= c
+    if b < c {
+        a < b || c < a
     } else {
-        a >= b || a <= c
+        a < b && c < a
     }
 }
