@@ -8,26 +8,22 @@ fn main() {
         mut h: [usize; n],
     }
 
-    let mut T: usize = 0;
+    let mut answer = 0;
 
     for mut a in h {
-        let num = a / 5;
-        T += num * 3;
+        let number = a / 5;
+        answer += number * 3;
         a %= 5;
 
         while a > 0 {
-            T += 1;
-            if T % 3 == 0 {
-                if a >= 3 {
-                    a -= 3;
-                } else {
-                    a = 0; // aが3未満の場合、0にする
-                }
+            answer += 1;
+            if answer % 3 == 0 {
+                a -= 3;
             } else {
                 a -= 1;
             }
         }
     }
 
-    println!("{}", T);
+    println!("{}", answer);
 }

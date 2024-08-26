@@ -14,15 +14,8 @@ fn main() {
     input! {
         n: usize,
         k: usize,
-        a: [usize; n],
+        mut a: [usize; n],
     }
-    //aの後ろからk個を取り出してansに格納
-    let mut ans = vec![];
-    for i in n - k..n {
-        ans.push(a[i]);
-    }
-    for i in 0..n - k {
-        ans.push(a[i]);
-    }
-    println!("{}", ans.iter().join(" "));
+    a.rotate_right(k);
+    println!("{}", a.iter().join(" "));
 }
