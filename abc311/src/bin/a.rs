@@ -9,18 +9,17 @@ use proconio::{fastout, input, marker::*};
 #[allow(unused_imports)]
 use std::cmp::{max, min};
 #[allow(unused_imports)]
-use superslice::*;
-#[allow(unused_imports)]
 use std::collections::*;
+#[allow(unused_imports)]
+use superslice::*;
 #[allow(non_snake_case)]
 #[allow(unused_variables)]
 //type Mint = ModInt998244353;
-
 #[fastout]
 fn main() {
-    input!{
+    input! {
         h: usize, w: usize,
-        s: [Chars; h],
+        s: [usize; h],
         mut plan: [(usize, usize); h]
     }
 }

@@ -13,8 +13,22 @@ type Mint = ModInt998244353;
 fn main() {
     input! {
         n: usize,
-        w: Usize1,
-        s: [Chars; h],
-        mut plan: [(usize, usize); h]
     }
+    let mut a = vec![vec![]; n];
+
+    for i in 0..n {
+        input! {
+                v: [Usize1; i + 1],
+        }
+        a[i] = v;
+    }
+    let mut now = 0;
+    for i in 0..n {
+        if now >= i {
+            now = a[now][i];
+        } else {
+            now = a[i][now];
+        }
+    }
+    println!("{}", now + 1);
 }

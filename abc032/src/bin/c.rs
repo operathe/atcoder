@@ -13,25 +13,27 @@ type Mint = ModInt998244353;
 fn main() {
     input! {
         n: usize,
-        mut a: [usize; n],
+        k: usize,
+        s: [usize; n],
     }
-    let mut heap = BinaryHeap::from(a);
+    if s.iter().any(|&x| x == 0) {
+        println!("{}", n);
+        return;
+    }
     let mut ans = 0;
-
-    while let Some(mut max1) = heap.pop() {
-        if let Some(mut max2) = heap.pop() {
-            if max2 == 0 {
-                break;
-            }
-            ans += 1;
-            max1 -= 1;
-            max2 -= 1;
-            heap.push(max1);
-            heap.push(max2);
+    let mut right = 0;
+    let mut tmp = 1;
+    for left in 0..n {
+        while right < n && tmp * s[right] <= k {
+            tmp *= s[right];
+            right += 1;
+        }
+        ans = max(ans, right - left);
+        if left == right {
+            right += 1;
         } else {
-            break;
+            tmp /= s[left];
         }
     }
-
     println!("{}", ans);
 }

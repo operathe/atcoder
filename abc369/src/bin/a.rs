@@ -12,9 +12,15 @@ type Mint = ModInt998244353;
 #[fastout]
 fn main() {
     input! {
-        n: usize,
-        w: Usize1,
-        s: [Chars; h],
-        mut plan: [(usize, usize); h]
+        a: isize,
+        b: isize,
+    }
+    let diff = a + b;
+    match diff {
+        diff if diff == 2 * a => println!("1"),
+        diff if diff % 2 == 0 => println!("3"),
+        _ => {
+            println!("2");
+        }
     }
 }

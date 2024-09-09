@@ -8,22 +8,26 @@ fn main() {
         mut h: [usize; n],
     }
 
-    let mut answer = 0;
+    let mut ans = 0;
 
     for mut a in h {
-        let number = a / 5;
-        answer += number * 3;
+        let tmp = a / 5;
+        ans += tmp * 3;
         a %= 5;
 
         while a > 0 {
-            answer += 1;
-            if answer % 3 == 0 {
-                a -= 3;
+            ans += 1;
+            if ans % 3 == 0 {
+                if a >= 3 {
+                    a -= 3;
+                } else {
+                    a = 0;
+                }
             } else {
                 a -= 1;
             }
         }
     }
 
-    println!("{}", answer);
+    println!("{}", ans);
 }

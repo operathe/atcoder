@@ -17,6 +17,4 @@ fn main() {
     } else {
         unreachable!();
     };
-    // ansを出力する
-    println!("{}", ans);
 }
