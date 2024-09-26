@@ -1,5 +1,4 @@
 /target/
-/.cargo/
 /.idea/
 /.vscode/
 /.git/
@@ -8,3 +7,4 @@
 /.gitkeep
 /.gitlab-ci.yml
 /.hg/
+/.vim/
