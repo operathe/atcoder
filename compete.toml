@@ -39,8 +39,8 @@ fn main() {
         h: String,
         n: usize,
         w: Usize1,
-        s: [Chars; h],
-        mut plan: [(usize, usize); h]
+        s: [Chars; n],
+        mut plan: [(usize, usize); n]
     }
 }
 '''
