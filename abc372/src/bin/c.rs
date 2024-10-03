@@ -21,37 +21,32 @@ fn main() {
     for (x, c) in xc {
         let x = x - 1;
         if s[x] != c {
-            if x > 0 && x < n - 1 {
-                if s[x - 1] == 'A' && s[x] == 'B' && s[x + 1] == 'C' {
-                    count -= 1;
-                }
+            // 変更前のカウント減少
+            match (x > 0, x < n - 1) {
+                (true, true) if s[x - 1] == 'A' && s[x] == 'B' && s[x + 1] == 'C' => count -= 1,
+                _ => (),
             }
-            if x > 1 {
-                if s[x - 2] == 'A' && s[x - 1] == 'B' && s[x] == 'C' {
-                    count -= 1;
-                }
+            match x > 1 {
+                true if s[x - 2] == 'A' && s[x - 1] == 'B' && s[x] == 'C' => count -= 1,
+                _ => (),
             }
-            if x < n - 2 {
-                if s[x] == 'A' && s[x + 1] == 'B' && s[x + 2] == 'C' {
-                    count -= 1;
-                }
+            match x < n - 2 {
+                true if s[x] == 'A' && s[x + 1] == 'B' && s[x + 2] == 'C' => count -= 1,
+                _ => (),
             }
             s[x] = c;
-
-            if x > 0 && x < n - 1 {
-                if s[x - 1] == 'A' && s[x] == 'B' && s[x + 1] == 'C' {
-                    count += 1;
-                }
+            // 変更後のカウント増加
+            match (x > 0, x < n - 1) {
+                (true, true) if s[x - 1] == 'A' && s[x] == 'B' && s[x + 1] == 'C' => count += 1,
+                _ => (),
             }
-            if x > 1 {
-                if s[x - 2] == 'A' && s[x - 1] == 'B' && s[x] == 'C' {
-                    count += 1;
-                }
+            match x > 1 {
+                true if s[x - 2] == 'A' && s[x - 1] == 'B' && s[x] == 'C' => count += 1,
+                _ => (),
             }
-            if x < n - 2 {
-                if s[x] == 'A' && s[x + 1] == 'B' && s[x + 2] == 'C' {
-                    count += 1;
-                }
+            match x < n - 2 {
+                true if s[x] == 'A' && s[x + 1] == 'B' && s[x + 2] == 'C' => count += 1,
+                _ => (),
             }
         }
         println!("{}", count);
