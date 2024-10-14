@@ -9,6 +9,19 @@ use superslice::*;
 
 type Mint = ModInt998244353;
 
+#[fastout]
+fn main() {
+    input! {
+        n: usize,
+        k: [usize; n],
+    }
+
+    let total_sum: usize = k.iter().sum();
+    let sums = possible_sums(&k);
+    let result = min_max_partition(n, &sums, total_sum);
+    println!("{}", result);
+}
+
 fn possible_sums(k: &[usize]) -> HashSet<usize> {
     let mut sums = HashSet::new();
     sums.insert(0);
@@ -32,17 +45,4 @@ fn min_max_partition(n: usize, sums: &HashSet<usize>, total_sum: usize) -> usize
     }
 
     closest_sum.max(total_sum - closest_sum)
-}
-
-#[fastout]
-fn main() {
-    input! {
-        n: usize,
-        k: [usize; n],
-    }
-
-    let total_sum: usize = k.iter().sum();
-    let sums = possible_sums(&k);
-    let result = min_max_partition(n, &sums, total_sum);
-    println!("{}", result);
 }
