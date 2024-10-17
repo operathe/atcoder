@@ -8,3 +8,11 @@
 /.gitlab-ci.yml
 /.hg/
 /.vim/
+cargo.lock
+cargo.toml
+package-lock.json
+package.json
+yarn.lock
+yarn-error.log
+compete.toml
+compete.lock
