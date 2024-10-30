@@ -19,7 +19,11 @@ use superslice::*;
 fn main() {
     input! {
         h: usize, w: usize,
-        s: [usize; h],
-        mut plan: [(usize, usize); h]
     }
+    let mut ans = 0;
+    for i in 0..w {
+        ans += h
+    }
+    println!("{}", ans)
 }
+
