@@ -12,10 +12,15 @@ type Mint = ModInt998244353;
 #[fastout]
 fn main() {
     input! {
-        h: String,
-        n: usize,
-        w: Usize1,
-        s: [Chars; n],
-        mut plan: [(usize, usize); n]
+        a: [Usize1; 4],
     }
+    let mut ans = 0;
+    let mut count = vec![0usize; 4];
+    for &x in a.iter() {
+        count[x] += 1;
+    }
+    for i in 0..4 {
+        ans += count[i] / 2;
+    }
+    println!("{}", ans);
 }
