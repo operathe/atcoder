@@ -16,6 +16,7 @@ use std::iter::FromIterator;
 #[allow(non_snake_case)]
 #[allow(unused_variables)]
 #[fastout]
+
 fn main() {
     input! {
         n: usize, mut m: usize,
@@ -23,6 +24,7 @@ fn main() {
     }
 
     let mut ans = 0;
+
     for a in s {
         if m < a {
             break;
@@ -30,5 +32,6 @@ fn main() {
         m -= a;
         ans += 1;
     }
+
     println!("{}", ans);
 }
